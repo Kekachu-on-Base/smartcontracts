@@ -4,7 +4,7 @@ KEKACHU features automated tax collection and ETH conversion through Uniswap V2,
 
 ## Tokenomics
 
-### Total Supply: 69,000,000,000 CHUD
+### Total Supply: 69,000,000,000 KEKU
 
 #### Initial Distribution
 | Allocation | Percentage | Amount | Description |
