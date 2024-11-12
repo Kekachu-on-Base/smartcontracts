@@ -1,6 +1,6 @@
-# CHUD Token
+# KEKACHU Token
 
-CHUD is a deflationary token implementing advanced tax evolution mechanics and automated liquidity management on the Base Network.
+KEKACHU features automated tax collection and ETH conversion through Uniswap V2, with collected fees being directed to a designated treasury address, incorporating advanced anti-bot measures through a dynamic tax structure, progressive cooldown periods, anti-sniper protection during launch, transparent tax reduction phases, and verifiable transaction processing to prevent honeypot scenarios.
 
 ## Tokenomics
 
@@ -53,19 +53,174 @@ The contract implements a dynamic tax structure that evolves through multiple ph
    - Sell Tax: 0%
    - Purpose: Full decentralization
 
-### Security Features
-- Max Wallet: 1% of total supply (until final phase)
-- Max Transaction: Dynamic based on phase
-- Tax Swap Threshold: 0.3% of total supply
-- Max Tax Swap: 0.1% of total supply
-- Anti-Bot Measures: Progressive tax reduction
-- Automated Liquidity Generation
 
-Would you like me to continue with other sections of the README, such as:
-1. Technical Features & Contract Architecture
-2. Security Mechanisms
-3. Deployment & Network Information
-4. Setup & Integration Guide
-5. Development Commands & Testing
+## Core Features & Functions
 
-Let me know which section you'd like to focus on next!
+### Tax Management System
+
+#### Phase Control Functions
+
+1. `startTradingWithHighTax()`
+   - **Access**: Owner only
+   - **Purpose**: Initiates trading with high anti-bot taxes
+   - **Effects**:
+     - Sets initial buy/sell tax to 30%
+     - Starts trading timer
+     - Can only be executed once
+
+2. `reduceTaxAfterLaunch()`
+   - **Access**: Anyone (but requires conditions)
+   - **Purpose**: Reduces taxes after initial anti-bot period
+   - **Requirements**:
+     - Trading must be started
+     - 5 minutes must have passed since launch
+     - Not previously executed
+   - **Effects**: Reduces both buy/sell taxes to 5%
+
+3. `setFinalTaxes()`
+   - **Access**: Owner only
+   - **Purpose**: Sets sustainable long-term tax rates
+   - **Effects**:
+     - Buy tax: 0.69%
+     - Sell tax: 6.9%
+
+4. `setUltimateTaxes()`
+   - **Access**: Owner only
+   - **Purpose**: Equalizes buy/sell taxes and removes limits
+   - **Effects**:
+     - Both taxes set to 0.69%
+     - Removes max wallet restriction
+
+5. `setZeroTaxes()`
+   - **Access**: Owner only
+   - **Purpose**: Final phase with no taxes
+   - **Effects**: Removes all taxes (0%)
+
+### Tax Processing System
+
+#### Automated Tax Collection & Processing
+
+1. `_transfer()`
+   - **Purpose**: Core transfer function with tax processing
+   - **Features**:
+     - Applies appropriate buy/sell taxes
+     - Handles max wallet limits
+     - Processes automatic tax conversion
+     - Exempts whitelisted addresses
+
+2. `swapTokensForEth()`
+   - **Purpose**: Converts collected taxes to ETH
+   - **Process**:
+     - Creates token->WETH swap path
+     - Executes swap via Uniswap
+     - Internal function called during transfers
+
+3. `sendETHToFee()`
+   - **Purpose**: Forwards converted ETH to fee collection address
+   - **Process**: Direct ETH transfer to designated wallet
+
+### Management Functions
+
+#### Configuration & Control
+
+1. `updateTaxSwapSettings()`
+   - **Access**: Owner only
+   - **Purpose**: Configure tax collection parameters
+   - **Parameters**:
+     - `thresholdBips`: When to trigger swap (0.1% - 2%)
+     - `maxSwapBips`: Maximum swap amount (0.05% - 1%)
+
+2. `updateStripclubAddress()`
+   - **Access**: Owner only
+   - **Purpose**: Update fee collection address
+   - **Security**: Cannot be set to zero address
+
+3. `toggleSwapEnabled()`
+   - **Access**: Owner only
+   - **Purpose**: Enable/disable automatic tax processing
+
+#### Emergency & Recovery Functions
+
+1. `manualSwap()`
+   - **Access**: Owner only
+   - **Purpose**: Manually trigger tax token conversion
+   - **Process**:
+     - Swaps all contract tokens to ETH
+     - Forwards ETH to fee address
+
+2. `burnTax()`
+   - **Access**: Owner only
+   - **Purpose**: Burns collected tax tokens
+   - **Process**: Transfers specified amount to dead address
+
+3. `recoverETH()`
+   - **Access**: Owner only
+   - **Purpose**: Recover stuck ETH from contract
+   - **Security**: Cannot send to zero address
+
+4. `recoverERC20()`
+   - **Access**: Owner only
+   - **Purpose**: Recover any stuck ERC20 tokens
+   - **Security**: Cannot send to zero address
+
+### Monitoring Functions
+
+#### State & Settings Queries
+
+1. `getTaxPhaseStatus()`
+   - **Purpose**: Check current tax phase status
+   - **Returns**: Boolean status for each phase
+
+2. `getCurrentTaxSwapSettings()`
+   - **Purpose**: View tax swap configuration
+   - **Returns**: Current threshold and max swap amounts
+
+3. `getCurrentTaxes()`
+   - **Purpose**: Check current tax rates
+   - **Returns**: Current buy and sell tax percentages
+
+## Security Features
+
+### Anti-Bot Measures
+- High initial taxes (30%)
+- 5-minute lockdown period
+- Whitelist system for tax exemption
+
+### Transfer Restrictions
+- Max wallet limit (until ultimate phase)
+- Zero address transfer protection
+- Amount validation
+
+### Owner Controls
+- Phased tax reduction system
+- Emergency recovery functions
+- Configuration update capabilities
+
+## Events
+
+1. `TaxesUpdated`
+   - Emitted when tax rates change
+   - Includes phase information
+
+2. `TokensBurned`
+   - Tracks tax token burns
+   - Records amount and initiator
+
+3. `MaxWalletRemoved`
+   - Signals removal of wallet restrictions
+
+4. `TaxChangeQueued`
+   - Indicates pending tax changes
+
+5. `StripclubAddressUpdated`
+   - Records fee address updates
+
+6. `TaxSwapSettingsUpdated`
+   - Logs changes to swap configuration
+
+## Contract Constants
+
+- `MAX_TAX_SWAP_THRESHOLD`: 2% (200 basis points)
+- `MAX_TAX_SWAP_LIMIT`: 1% (100 basis points)
+- Initial Supply: 69,000,000,000 tokens
+- Decimals: 8
