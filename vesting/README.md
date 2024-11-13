@@ -1,152 +1,80 @@
-# Token Vesting Smart Contracts
+# Kekachu ($KEKU) Token Vesting Documentation
 
-This repository contains the implementation of token vesting contracts for distributing tokens over specified time periods on Base Network.
+This repository contains the implementation of token vesting contracts for distributing $KEKU tokens over specified time periods on Base Network.
 
 ## Overview
 
-Four vesting contracts have been deployed, each handling 20 million tokens with different vesting durations:
-- 1 month (30 days)
-- 2 months (60 days)
-- 3 months (90 days)
-- 4 months (120 days)
+Four vesting contracts have been deployed, each handling 0.69% of total supply (476,100,000 $KEKU) with sequential vesting periods:
+- Contract 1: Immediate start, 30-day vesting
+- Contract 2: Starts after 1 month, 30-day vesting
+- Contract 3: Starts after 2 months, 30-day vesting
+- Contract 4: Starts after 3 months, 30-day vesting
 
-## Contract Details
+## Token Details
 
-- Token Address: `0x0D8CB592f8ED649Cd6AC6bDF83Df092Bf6870f0c`
-- Token Decimals: 8
-- Amount per Contract: 20,000,000 tokens
+- Name: Kekachu
+- Symbol: $KEKU
+- Contract Address: `0x0D8CB592f8ED649Cd6AC6bDF83Df092Bf6870f0c`
+- Decimals: 8
+- Total Supply: 69,000,000,000 $KEKU
+- Amount per Vesting Contract: 476,100,000 $KEKU (0.69% of supply)
 - Network: Base Mainnet
 
-## Deployed Contracts
+## Deployed Vesting Contracts
 
-| Duration | Contract Address | Start Date | End Date |
-|----------|-----------------|------------|-----------|
-| 30 days  | [Contract 1] | Dec 14, 2024 08:28:38 UTC | Jan 13, 2025 08:28:38 UTC |
-| 60 days  | [Contract 2] | [Start Date] | [End Date] |
-| 90 days  | [Contract 3] | [Start Date] | [End Date] |
-| 120 days | [Contract 4] | [Start Date] | [End Date] |
+| Contract | Address | Start Date | End Date | Amount |
+|----------|---------|------------|-----------|---------|
+| Vesting 1 | `0x3709ADF4968153C01381AA550271BeBF2c22C6d9` | Nov 13, 2024 | Dec 13, 2024 | 476.1M $KEKU |
+| Vesting 2 | `0x59A28a82a47e5D43e1F3c68024b327168F63dE81` | Dec 13, 2024 | Jan 13, 2025 | 476.1M $KEKU |
+| Vesting 3 | `0x0eA8b2827314fD8cEf2f9Dd031EE60cA06FC5F42` | Jan 13, 2025 | Feb 13, 2025 | 476.1M $KEKU |
+| Vesting 4 | `0xa1969FDF5B34b78EeD6EE66e5bB083AC336c347C` | Feb 13, 2025 | Mar 13, 2025 | 476.1M $KEKU |
 
-## Key Functions
+## Vesting Schedule
 
-### View Functions
+Total tokens being vested: 1,904,400,000 $KEKU (2.76% of total supply)
 
-1. Check Vesting Schedule:
-```solidity
-function start() public view returns (uint256)
-function duration() public view returns (uint256)
-function end() public view returns (uint256)
-```
+### Release Schedule
+- Nov 13 - Dec 13, 2024: Contract 1 releases ~15.87M $KEKU daily
+- Dec 13 - Jan 13, 2025: Contract 2 releases ~15.87M $KEKU daily
+- Jan 13 - Feb 13, 2025: Contract 3 releases ~15.87M $KEKU daily
+- Feb 13 - Mar 13, 2025: Contract 4 releases ~15.87M $KEKU daily
 
-2. Check Released Amounts:
-```solidity
-function released(address token) public view returns (uint256)
-function releasable(address token) public view returns (uint256)
-```
+Each contract:
+- Vests linearly over 30 days
+- Releases tokens continuously
+- Can be claimed at any time during vesting
+- Automatically calculates claimable amounts
 
-3. Check Vested Amount:
-```solidity
-function vestedAmount(address token, uint64 timestamp) public view returns (uint256)
-```
+## How to Check Your Vesting
 
-### Action Functions
-
-1. Release Vested Tokens:
-```solidity
-function release(address token) public
-```
-
-## Verification Guide
-
-### Contract Verification Parameters
-
-For the 30-day contract:
-- Start Timestamp: 1731518918 (December 14, 2024 08:28:38 UTC)
-- Duration: 2592000 (30 days in seconds)
-- End Timestamp: 1734110918 (January 13, 2025 08:28:38 UTC)
-
-To verify on Basescan:
-```bash
-npx hardhat verify --network base CONTRACT_ADDRESS 1731518918 2592000
-```
-
-### Timestamp Calculations
-- 1 day = 86400 seconds
-- 30 days = 2592000 seconds
-- 60 days = 5184000 seconds
-- 90 days = 7776000 seconds
-- 120 days = 10368000 seconds
-
-## Monitoring Vesting Progress
-
-1. Check Current Vested Amount:
-   - Call `vestedAmount(tokenAddress, uint64(block.timestamp))`
-   - Compare with total allocation (20M tokens)
-
-2. Check Available for Release:
-   - Call `releasable(tokenAddress)`
-   - This shows tokens ready for claiming
-
-3. View Release History:
-   - Check `Released` events in contract history
-   - Call `released(tokenAddress)` for total released amount
+1. Connect to Base Network
+2. Check the contract for your vesting period
+3. Use view functions to see:
+   - Total vested amount
+   - Available for claiming
+   - Already claimed amount
 
 ## Important Links
 
-- [Base Network Explorer](https://basescan.org)
-- [Token Contract](https://basescan.org/address/0x0D8CB592f8ED649Cd6AC6bDF83Df092Bf6870f0c)
-- [Vesting Contract Source Code](./contracts/VestingWallet.sol)
+- [Base Explorer](https://basescan.org)
+- [$KEKU Token](https://basescan.org/address/0x0D8CB592f8ED649Cd6AC6bDF83Df092Bf6870f0c)
+- [Vesting Contract 1](https://basescan.org/address/0x3709ADF4968153C01381AA550271BeBF2c22C6d9)
+- [Vesting Contract 2](https://basescan.org/address/0x59A28a82a47e5D43e1F3c68024b327168F63dE81)
+- [Vesting Contract 3](https://basescan.org/address/0x0eA8b2827314fD8cEf2f9Dd031EE60cA06FC5F42)
+- [Vesting Contract 4](https://basescan.org/address/0xa1969FDF5B34b78EeD6EE66e5bB083AC336c347C)
 
-## Technical Implementation
+## Security Features
 
-The vesting contract implements:
-- Linear vesting schedule
-- Token release mechanism
-- SafeERC20 for secure token transfers
-- Ownable pattern for access control
+- Linear vesting mechanism
+- No admin functions to modify vesting
+- Immutable schedule
+- Protected token transfers
 
-### Vesting Formula
+## Timeline Overview
 
-The amount of tokens vested at any given time is calculated using:
 ```
-if (timestamp < start) return 0;
-if (timestamp > end) return totalAllocation;
-return (totalAllocation * (timestamp - start)) / duration;
+Nov 13 -------- Dec 13 -------- Jan 13 -------- Feb 13 -------- Mar 13
+   |              |              |              |              |
+Contract 1     Contract 2     Contract 3     Contract 4      Complete
+476.1M KEKU    476.1M KEKU    476.1M KEKU    476.1M KEKU
 ```
-
-## Security Considerations
-
-1. Owner Control
-   - The beneficiary (owner) is set at deployment
-   - Owner can transfer ownership
-
-2. Token Safety
-   - Uses OpenZeppelin's SafeERC20
-   - Protected against token transfer failures
-
-3. Time Mechanics
-   - Based on block timestamps
-   - Linear release mechanism
-   - No admin function to modify schedule
-
-## Testing
-
-1. Local Testing:
-```bash
-npx hardhat test
-```
-
-2. Live Contract Testing:
-   - Check vested amounts using view functions
-   - Monitor token balances
-   - Track release events
-
-## Development
-
-Built using:
-- Hardhat
-- OpenZeppelin Contracts v5.1.0
-- Solidity ^0.8.20
-
-## License
-
-MIT License
