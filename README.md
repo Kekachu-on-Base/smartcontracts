@@ -10,19 +10,20 @@ KEKACHU features automated tax collection and ETH conversion through Uniswap V2,
 | Allocation | Percentage | Amount | Description |
 |------------|------------|---------|-------------|
 | Permanent Burn | 69% | 47,610,000,000 | Initial burn to reduce total supply |
-| Liquidity Pool | 14% | 9,660,000,000 | Initial liquidity provision |
-| LP Staking | 10% | 6,900,000,000 | Rewards for LP staking program |
-| Project Development | 4.20% | 2,898,000,000 | Project development fund (12-month timelock) |
-| Development Team | 2.76% | 1,904,400,000 | Split across multiple timelocks |
-| Reserve | 0.04% | 27,600,000 | Emergency fund |
+| Liquidity Pool | 18% | 12,420,000,000 | Initial liquidity provision |
+| LP Staking Rewards | 8.8% | 6,072,000,000 | LP staking program rewards |
+| AutismLLM Vesting | 2.76% | 1,904,400,000 | Sequential vesting controlled by LLM |
+| EARN to MEME | 1.4% | 966,000,000 | Earn to Meme program rewards |
+| Contract Burn | 0.04% | 27,600,000 | Additional burn mechanism |
 
-#### Development Team Allocation Breakdown
-| Timelock Period | Percentage | Amount |
-|-----------------|------------|---------|
-| 1 Month Lock | 0.69% | 476,100,000 |
-| 2 Month Lock | 0.69% | 476,100,000 |
-| 3 Month Lock | 0.69% | 476,100,000 |
-| 6 Month Lock | 0.69% | 476,100,000 |
+#### AutismLLM Vesting Breakdown
+| Vesting Schedule | Percentage | Amount | Structure |
+|-----------------|------------|---------|------------|
+| First Contract | 0.69% | 476,100,000 | Month 1: Linear daily release |
+| Second Contract | 0.69% | 476,100,000 | Month 2: Linear daily release |
+| Third Contract | 0.69% | 476,100,000 | Month 3: Linear daily release |
+| Fourth Contract | 0.69% | 476,100,000 | Month 4: Linear daily release |
+
 
 ### Tax Structure Evolution
 The contract implements a dynamic tax structure that evolves through multiple phases:
