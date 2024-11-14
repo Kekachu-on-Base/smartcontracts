@@ -3,6 +3,7 @@
 KEKACHU features automated tax collection and ETH conversion through Uniswap V2, with collected fees being directed to a designated treasury address, incorporating advanced anti-bot measures through a dynamic tax structure, progressive cooldown periods, anti-sniper protection during launch, transparent tax reduction phases, and verifiable transaction processing to prevent honeypot scenarios.
 
 ## Tokenomics
+0x1784D7329f99826b6bFC374eC62eEFA38Ab9F107
 
 ### Total Supply: 69,000,000,000 KEKU
 
@@ -14,7 +15,6 @@ KEKACHU features automated tax collection and ETH conversion through Uniswap V2,
 | LP Staking Rewards | 8.8% | 6,072,000,000 | LP staking program rewards |
 | AutismLLM Vesting | 2.76% | 1,904,400,000 | Sequential vesting controlled by LLM |
 | EARN to MEME | 1.4% | 966,000,000 | Earn to Meme program rewards |
-| Contract Burn | 0.04% | 27,600,000 | Additional burn mechanism |
 
 #### AutismLLM Vesting Breakdown
 | Vesting Schedule | Percentage | Amount | Structure |

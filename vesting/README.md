@@ -14,7 +14,7 @@ Four vesting contracts have been deployed, each handling 0.69% of total supply (
 
 - Name: Kekachu
 - Symbol: $KEKU
-- Contract Address: `0x0D8CB592f8ED649Cd6AC6bDF83Df092Bf6870f0c`
+- Contract Address: `0x1784D7329f99826b6bFC374eC62eEFA38Ab9F107`
 - Decimals: 8
 - Total Supply: 69,000,000,000 $KEKU
 - Amount per Vesting Contract: 476,100,000 $KEKU (0.69% of supply)
@@ -24,10 +24,10 @@ Four vesting contracts have been deployed, each handling 0.69% of total supply (
 
 | Contract | Address | Start Date | End Date | Amount |
 |----------|---------|------------|-----------|---------|
-| Vesting 1 | `0x3709ADF4968153C01381AA550271BeBF2c22C6d9` | Nov 13, 2024 | Dec 13, 2024 | 476.1M $KEKU |
-| Vesting 2 | `0x59A28a82a47e5D43e1F3c68024b327168F63dE81` | Dec 13, 2024 | Jan 13, 2025 | 476.1M $KEKU |
-| Vesting 3 | `0x0eA8b2827314fD8cEf2f9Dd031EE60cA06FC5F42` | Jan 13, 2025 | Feb 13, 2025 | 476.1M $KEKU |
-| Vesting 4 | `0xa1969FDF5B34b78EeD6EE66e5bB083AC336c347C` | Feb 13, 2025 | Mar 13, 2025 | 476.1M $KEKU |
+| Vesting 1 | `0x1a062722685FF8F9ea5f33f1ad6707d4FAE6c184` | Nov 13, 2024 | Dec 13, 2024 | 476.1M $KEKU |
+| Vesting 2 | `0x611e7A3933F60FC57754Ea48bE19BE7FaD490073` | Dec 13, 2024 | Jan 13, 2025 | 476.1M $KEKU |
+| Vesting 3 | `0xa3e0F011653D2a2C1Aac66F56a2Fbb53C7352f51` | Jan 13, 2025 | Feb 13, 2025 | 476.1M $KEKU |
+| Vesting 4 | `0xb4bb49d5218CBdd352BA9f73a3C77Ea1ae9A89d3` | Feb 13, 2025 | Mar 13, 2025 | 476.1M $KEKU |
 
 ## Vesting Schedule
 
@@ -57,11 +57,10 @@ Each contract:
 ## Important Links
 
 - [Base Explorer](https://basescan.org)
-- [$KEKU Token](https://basescan.org/address/0x0D8CB592f8ED649Cd6AC6bDF83Df092Bf6870f0c)
-- [Vesting Contract 1](https://basescan.org/address/0x3709ADF4968153C01381AA550271BeBF2c22C6d9)
-- [Vesting Contract 2](https://basescan.org/address/0x59A28a82a47e5D43e1F3c68024b327168F63dE81)
-- [Vesting Contract 3](https://basescan.org/address/0x0eA8b2827314fD8cEf2f9Dd031EE60cA06FC5F42)
-- [Vesting Contract 4](https://basescan.org/address/0xa1969FDF5B34b78EeD6EE66e5bB083AC336c347C)
+- [Vesting Contract 1](https://basescan.org/address/0x1a062722685FF8F9ea5f33f1ad6707d4FAE6c184)
+- [Vesting Contract 2](https://basescan.org/address/0x611e7A3933F60FC57754Ea48bE19BE7FaD490073)
+- [Vesting Contract 3](https://basescan.org/address/0xa3e0F011653D2a2C1Aac66F56a2Fbb53C7352f51)
+- [Vesting Contract 4](https://basescan.org/address/0xb4bb49d5218CBdd352BA9f73a3C77Ea1ae9A89d3)
 
 ## Security Features
 
